@@ -36,8 +36,11 @@ jobs:
         with:
           plugins: "true"
 
-      - name: Preload Cutver plugins into cache
-        run: cutver plugin add github-publish --event on_pre_bump --event on_post_release --force
+      - name: Fetch Cutver plugins
+        run: |
+          mkdir -p ~/.cache/cutver/plugins
+          curl -sL https://github.com/cutver/plugins/releases/download/github-publish-v0.1.0/github-publish.wasm \
+            -o ~/.cache/cutver/plugins/github-publish-0.1.0.wasm
 
       - name: Run Cutver Release
         uses: cutver/release@v1

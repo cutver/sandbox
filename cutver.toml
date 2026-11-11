@@ -1,6 +1,20 @@
 [project]
 name = "sandbox"
-version = "0.1.0"
+
+[[manifest]]
+path = "package.json"
+kind = "json"
+field = "version"
+
+[changelog]
+path = "CHANGELOG.md"
+format = "keep-a-changelog"
+
+[git]
+tag_prefix = "v"
+commit_message = "chore(release): v{{ version }} [skip ci]"
+require_clean_tree = true
+require_branch = "main"
 
 [plugins.github-publish]
 runtime = "wasm"
@@ -12,7 +26,7 @@ events = ["on_pre_bump", "on_post_release"]
 [plugins.github-publish.permissions]
 network = ["api.github.com", "uploads.github.com"]
 env = ["GITHUB_TOKEN"]
-filesystem = ["CHANGELOG.md"]
+filesystem = ["."]
 
 [plugins.github-publish.config]
 repository = "cutver/sandbox"
