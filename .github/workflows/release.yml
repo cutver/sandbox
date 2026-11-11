@@ -58,7 +58,8 @@ jobs:
         uses: cutver/release@v1
         with:
           command: "release"
-          bump: ${{ inputs.bump || 'patch' }}
+          bump: ${{ inputs.bump || 'minor' }}
+          template: ".github/templates/cutver/RELEASE.md"
           check-changelog: "false"
         env:
           GITHUB_TOKEN: ${{ steps.bot-token.outputs.token || secrets.GITHUB_TOKEN }}

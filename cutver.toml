@@ -9,6 +9,8 @@ field = "version"
 [changelog]
 path = "CHANGELOG.md"
 format = "keep-a-changelog"
+mode = "template"
+template_file = ".github/templates/cutver/RELEASE.md"
 
 [git]
 tag_prefix = "v"
