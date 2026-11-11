@@ -25,7 +25,7 @@ events = ["on_pre_bump", "on_post_release"]
 
 [plugins.github-publish.permissions]
 network = ["api.github.com", "uploads.github.com"]
-env = ["GITHUB_TOKEN"]
+env = ["GITHUB_TOKEN", "GITHUB_REPOSITORY"]
 filesystem = ["."]
 
 [plugins.github-publish.config]
