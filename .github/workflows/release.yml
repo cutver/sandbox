@@ -62,3 +62,6 @@ jobs:
           check-changelog: "false"
         env:
           GITHUB_TOKEN: ${{ steps.bot-token.outputs.token || secrets.GITHUB_TOKEN }}
+
+      - name: Push release commit
+        run: git push origin main
