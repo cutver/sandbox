@@ -6,9 +6,10 @@ on:
       bump:
         description: "SemVer bump level"
         required: false
-        default: "patch"
+        default: "auto"
         type: choice
         options:
+          - auto
           - patch
           - minor
           - major
@@ -58,9 +59,9 @@ jobs:
         uses: cutver/release@v1
         with:
           command: "release"
-          bump: ${{ inputs.bump || 'minor' }}
+          bump: ${{ inputs.bump || 'auto' }}
           template: ".github/templates/cutver/RELEASE.md"
-          check-changelog: "false"
+          check-changelog: "true"
         env:
           GITHUB_TOKEN: ${{ steps.bot-token.outputs.token || secrets.GITHUB_TOKEN }}
 
