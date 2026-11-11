@@ -16,10 +16,13 @@ commit_message = "chore(release): v{{ version }} [skip ci]"
 require_clean_tree = true
 require_branch = "main"
 
+[publish]
+push = true
+
 [plugins.github-publish]
 runtime = "wasm"
-source = "github-publish-0.1.1.wasm"
-hash = "78d9ebe0d80c97260fa65e79e0ca155389fc7383daf2d0285f81e4b874c98582"
+source = "github-publish-0.1.2.wasm"
+hash = "5f44775e7b6f14a0b7cc57c19a3c694b5f3c177971f797e1a61177bcc0ae5b23"
 capabilities = ["lifecycle.v1"]
 events = ["on_pre_bump", "on_post_release"]
 

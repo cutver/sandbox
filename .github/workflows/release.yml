@@ -51,8 +51,8 @@ jobs:
       - name: Fetch Cutver plugins
         run: |
           mkdir -p ~/.cache/cutver/plugins
-          curl -sL https://github.com/cutver/plugins/releases/download/github-publish-v0.1.1/github-publish.wasm \
-            -o ~/.cache/cutver/plugins/github-publish-0.1.1.wasm
+          curl -sL https://github.com/cutver/plugins/releases/download/github-publish-v0.1.2/github-publish.wasm \
+            -o ~/.cache/cutver/plugins/github-publish-0.1.2.wasm
 
       - name: Run Cutver Release
         uses: cutver/release@v1
