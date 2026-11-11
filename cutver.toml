@@ -18,8 +18,8 @@ require_branch = "main"
 
 [plugins.github-publish]
 runtime = "wasm"
-source = "github-publish-0.1.0.wasm"
-hash = "dd14ccf19957d411c322ed1d419f5d5569f914d9fc63bb14340874b823c735d2"
+source = "github-publish-0.1.1.wasm"
+hash = "78d9ebe0d80c97260fa65e79e0ca155389fc7383daf2d0285f81e4b874c98582"
 capabilities = ["lifecycle.v1"]
 events = ["on_pre_bump", "on_post_release"]
 
