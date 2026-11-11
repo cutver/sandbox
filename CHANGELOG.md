@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.1.2] - 2026-11-11
+
+### Maintenance
+- push commit from workflow to avoid tag collision with github-publish
 ## [v0.1.1] - 2026-11-11
 
 ### Features
