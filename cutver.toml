@@ -1,0 +1,18 @@
+[project]
+name = "sandbox"
+version = "0.1.0"
+
+[plugins.github-publish]
+runtime = "wasm"
+source = "github-publish-0.1.0.wasm"
+hash = "dd14ccf19957d411c322ed1d419f5d5569f914d9fc63bb14340874b823c735d2"
+capabilities = ["lifecycle.v1"]
+events = ["on_pre_bump", "on_post_release"]
+
+[plugins.github-publish.permissions]
+network = ["api.github.com", "uploads.github.com"]
+env = ["GITHUB_TOKEN"]
+filesystem = ["CHANGELOG.md"]
+
+[plugins.github-publish.config]
+repository = "cutver/sandbox"

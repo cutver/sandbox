@@ -1,0 +1,49 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: "SemVer bump level"
+        required: false
+        default: "patch"
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Canary Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Git bot credentials
+        run: |
+          git config --global user.name "cutver-release[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Setup Cutver CLI with plugins
+        uses: cutver/setup@v1
+        with:
+          plugins: "true"
+
+      - name: Preload Cutver plugins into cache
+        run: cutver plugin add github-publish --event on_pre_bump --event on_post_release --force
+
+      - name: Run Cutver Release
+        uses: cutver/release@v1
+        with:
+          command: "release"
+          bump: ${{ inputs.bump || 'patch' }}
+          check-changelog: "false"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
