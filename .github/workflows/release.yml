@@ -112,5 +112,7 @@ jobs:
               exit 1
               ;;
           esac
-          gh release edit "$TAG" --draft=false --title "Release $TAG" --notes-file CHANGELOG.md
+          # The plugin owns the body: it is already the rendered entry. Overwriting it with the whole
+          # changelog file would make the canary lie about what production publishes.
+          gh release edit "$TAG" --draft=false --title "Release $TAG"
           gh release view "$TAG" --json isDraft,tagName --jq 'if .isDraft then error("release is still a draft after publishing") else "published \(.tagName)" end'
