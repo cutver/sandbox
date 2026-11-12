@@ -12,24 +12,11 @@
 {% endfor %}
 {%- endif %}
 
-{%- for type, type_commits in commits | group_by_type %}
-{%- set visible = type_commits | rejectattr("is_breaking") %}
+{%- for section, section_commits in commits | group_by_section %}
+{%- set visible = section_commits | rejectattr("is_breaking") %}
 {%- if visible %}
-{%- if type == 'feat' %}
-### ✨ Features
-{%- elif type == 'fix' %}
-### 🐛 Fixes
-{%- elif type == 'perf' %}
-### ⚡ Performance
-{%- elif type == 'refactor' %}
-### 🔄 Refactoring
-{%- elif type == 'docs' %}
-### 📚 Documentation
-{%- elif type in ['chore', 'build', 'ci', 'test', 'style', 'revert'] %}
-### 🧰 Maintenance
-{%- else %}
-### {{ type | title }}
-{%- endif %}
+
+### {{ section }}
 {% for c in visible -%}
 - {{ c.line }}
 {% endfor %}
@@ -37,6 +24,7 @@
 {%- endfor %}
 
 {%- if first_time_contributors %}
+
 ### 🌱 First-time contributors
 {% for author in first_time_contributors -%}
 @{{ author }}{{ " · " if not loop.last }}
@@ -44,6 +32,7 @@
 {%- endif %}
 
 {%- if contributors %}
+
 ### 👥 Contributors
 {% for author in contributors -%}
 @{{ author }}{{ " · " if not loop.last }}
