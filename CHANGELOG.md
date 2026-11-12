@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## v1.1.0 — 2026-11-12
+
+### ✨ Features
+- **api**: add the reports endpoint ([6b868c7](https://github.com/cutver/sandbox/commit/6b868c7b303c3fef23514298fd3eb4f3100768e7)) by @Row0902
+
+
+### 🐛 Fixes
+- **cli**: handle an empty config ([f07730a](https://github.com/cutver/sandbox/commit/f07730acd911e0a7511040607af9b95dfb9b67bf)) by @Row0902
+
+
+### 📚 Documentation
+- **usage**: show the quick path ([8d566d8](https://github.com/cutver/sandbox/commit/8d566d89fec6412612582c51a16045cf9c8b1655)) by @Row0902
+
+
+### 🛠️ Maintenance
+- **release**: rehearse the section grouping ([d11a0b0](https://github.com/cutver/sandbox/commit/d11a0b003325052d371ce57071c11a126c41f970)) by @Row0902
+- **template**: group by section so maintenance types share one heading ([cebb8c9](https://github.com/cutver/sandbox/commit/cebb8c97ecfbb01c663def70ed9ed978977a2b8d)) by @Row0902
+
+
+### 👥 Contributors
+@Row0902
+
+[Compare v1.0.0...v1.1.0](https://github.com/cutver/sandbox/compare/v1.0.0...v1.1.0)
 ## v1.0.0 — 2026-11-12
 
 > [!WARNING]
