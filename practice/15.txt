@@ -1,0 +1,1 @@
+docs(usage): show the quick path
