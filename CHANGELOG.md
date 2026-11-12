@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.2.5 — 2026-11-12
+### 🧰 Maintenance
+- **template**: adopt the redesigned release entry ([cbe2279](https://github.com/cutver/sandbox/commit/cbe22791475545bb12f03de1fca1095e412d58b6)) by @Row0902
+
+### 👥 Contributors
+@Row0902
+
+[Compare v0.2.4...v0.2.5](https://github.com/cutver/sandbox/compare/v0.2.4...v0.2.5)
 ## [v0.2.4] - 2026-11-12
 ### 👥 Contributors
 - @Row0902
