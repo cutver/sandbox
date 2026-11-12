@@ -35,3 +35,5 @@ filesystem = ["."]
 
 [plugins.github-publish.config]
 repository = "cutver/sandbox"
+# Practice: a draft is invisible, so a failed run in the playground leaves nothing public.
+draft = true

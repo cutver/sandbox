@@ -56,6 +56,7 @@ jobs:
             -o ~/.cache/cutver/plugins/github-publish-0.1.2.wasm
 
       - name: Run Cutver Release
+        id: cutver
         uses: cutver/release@v1
         with:
           command: "release"
@@ -67,3 +68,48 @@ jobs:
 
       - name: Push release commit
         run: git push origin main
+
+      - name: Upload assets into the draft release
+        env:
+          GH_TOKEN: ${{ steps.bot-token.outputs.token || secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.cutver.outputs.tag }}
+        run: |
+          # Practice stand-in: the sandbox builds no binaries, so the notes and a marker stand in
+          # for the platform archives. The guard, the upload and the promotion are the real logic.
+          mkdir -p dist
+          cp CHANGELOG.md dist/SANDBOX-CHANGELOG.md
+          printf 'tag=%s practice=draft-then-publish\n' "$TAG" > dist/SANDBOX-MARKER.txt
+          if state=$(gh release view "$TAG" --json isDraft --jq 'if .isDraft then "draft" else "published" end' 2>&1); then
+            case "$state" in
+              draft|published) echo "release $TAG is $state; uploading assets" ;;
+              *)
+                echo "::error::Unexpected release state for $TAG: '$state'."
+                exit 1
+                ;;
+            esac
+          else
+            echo "::error::Could not read the release for $TAG: $state"
+            echo "::error::If it does not exist, github-publish never created its draft: check the plugin-enabled build and on_post_release."
+            exit 1
+          fi
+          gh release upload "$TAG" dist/* --clobber
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ steps.bot-token.outputs.token || secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.cutver.outputs.tag }}
+        run: |
+          state=$(gh release view "$TAG" --json isDraft --jq 'if .isDraft then "draft" else "published" end')
+          case "$state" in
+            published)
+              echo "release $TAG is already published; nothing to promote"
+              exit 0
+              ;;
+            draft) ;;
+            *)
+              echo "::error::Refusing to promote $TAG: expected a draft, got '$state'."
+              exit 1
+              ;;
+          esac
+          gh release edit "$TAG" --draft=false --title "Release $TAG" --notes-file CHANGELOG.md
+          gh release view "$TAG" --json isDraft,tagName --jq 'if .isDraft then error("release is still a draft after publishing") else "published \(.tagName)" end'
