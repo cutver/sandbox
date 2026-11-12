@@ -1,6 +1,6 @@
 {
   "name": "@cutver/sandbox",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Canary testbed for Cutver release orchestration",
   "type": "module"
 }

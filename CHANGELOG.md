@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.2.4] - 2026-11-12
+### 👥 Contributors
+- @Row0902
+
+
+---
+**Full Changelog**: https://github.com/cutver/sandbox/compare/v0.2.3...v0.2.4 • *CI Build #13*
 ## [v0.2.3] - 2026-11-12
 ### 🛠️ Maintenance & Dependencies
 - practice the draft-then-publish flow in the canary release ([31efbb7](https://github.com/cutver/sandbox/commit/31efbb74a0e1d15bfbb98b2c1238c9598d19d539)) by @agent
