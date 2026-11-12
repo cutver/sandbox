@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.2.2] - 2026-11-12
+### 👥 Contributors
+- @cutver-release[bot]
+
+
+---
+**Full Changelog**: https://github.com/cutver/sandbox/compare/v0.2.1...v0.2.2 • *CI Build #11*
 ## [v0.2.1] - 2026-11-11
 ### 🐛 Bug Fixes
 - **cli**: optimize memory buffer allocation ([cf89900](https://github.com/cutver/sandbox/commit/cf8990024201f993edf2a2753b0d4ef1d8255c34)) by @Row0902
